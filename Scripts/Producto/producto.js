@@ -5,27 +5,39 @@ import {
 } from "../Storage/storage.js";
 
 /**
+ * Modelo => ProductoModel
+ * id
+ * codigo_producto
+ * nombre_producto
+ * precio
+ * existencia  
+ */
+
+/**
  * Guarda o actualiza un producto
  * @param {Object} producto
  * @returns {boolean}
  */
 export function guardarProducto(producto) {
     if (!producto) return false;
+    const listado = normalizarListado(accederElementoEnStorage(STORAGE_KEY.Listado, []));
 
-    const listado = accederElementoEnStorage(STORAGE_KEY.Listado, []);
+    if (!validarProducto(producto)) {
+        return false;
+    }
 
     // ACTUALIZAR
     if (producto.id && producto.id > 0) {
-        const index = listado.findIndex(p => p.id === producto.id);
+        const idNum = Number(producto.id);
+        const index = listado.findIndex(p => Number(p.id) === idNum);
         if (index === -1) return false;
 
-        listado[index] = { ...producto };
+        listado[index] = { ...producto, id: idNum };
     }
     // CREAR
     else {
         const nuevoId = generarNuevoId(listado);
-        producto.id = nuevoId;
-        listado.push(producto);
+        listado.push({ ...producto, id: nuevoId });
     }
 
     return guardarElementoEnStorage(STORAGE_KEY.Listado, listado);
@@ -36,7 +48,7 @@ export function guardarProducto(producto) {
  * @returns {Array}
  */
 export function obtenerlistadoProducto() {
-    return accederElementoEnStorage(STORAGE_KEY.Listado, []);
+    return normalizarListado(accederElementoEnStorage(STORAGE_KEY.Listado, []));
 }
 
 /**
@@ -47,8 +59,9 @@ export function obtenerlistadoProducto() {
 export function encontrarPorIdProducto(id) {
     if (!id) return null;
 
-    const listado = accederElementoEnStorage(STORAGE_KEY.Listado, []);
-    return listado.find(p => p.id === id) || null;
+    const listado = normalizarListado(accederElementoEnStorage(STORAGE_KEY.Listado, []));
+    const idNum = Number(id);
+    return listado.find(p => Number(p.id) === idNum) || null;
 }
 
 /**
@@ -59,8 +72,9 @@ export function encontrarPorIdProducto(id) {
 export function eliminarProducto(id) {
     if (!id) return false;
 
-    const listado = accederElementoEnStorage(STORAGE_KEY.Listado, []);
-    const nuevoListado = listado.filter(p => p.id !== id);
+    const listado = normalizarListado(accederElementoEnStorage(STORAGE_KEY.Listado, []));
+    const idNum = Number(id);
+    const nuevoListado = listado.filter(p => Number(p.id) !== idNum);
 
     if (listado.length === nuevoListado.length) {
         return false; // no se eliminó nada
@@ -75,6 +89,34 @@ export function eliminarProducto(id) {
  * @returns {number}
  */
 function generarNuevoId(listado) {
-    if (!listado.length) return 1;
-    return Math.max(...listado.map(p => p.id)) + 1;
+    const ids = (Array.isArray(listado) ? listado : [])
+        .map(p => Number(p?.id))
+        .filter(n => Number.isFinite(n) && n > 0);
+
+    return ids.length ? Math.max(...ids) + 1 : 1;
+}
+
+function normalizarListado(valor) {
+    // Repara casos como "[[],[]]" o cualquier estructura no válida
+    if (!Array.isArray(valor)) return [];
+    return valor.filter(p => p && typeof p === "object" && !Array.isArray(p));
+}
+
+function validarProducto(producto) {
+    if (!producto || typeof producto !== "object") return false;
+
+    const codigo = String(producto.codigo_producto ?? "").trim();
+    const nombre = String(producto.nombre_producto ?? "").trim();
+    if (producto.precio === null || producto.precio === undefined) return false;
+    if (producto.existencia === null || producto.existencia === undefined) return false;
+
+    const precio = Number(producto.precio);
+    const existencia = Number(producto.existencia);
+
+    if (!codigo) return false;
+    if (!nombre) return false;
+    if (!Number.isFinite(precio) || precio < 0) return false;
+    if (!Number.isFinite(existencia) || existencia < 0) return false;
+
+    return true;
 }
