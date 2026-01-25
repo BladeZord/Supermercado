@@ -97,7 +97,6 @@ function generarNuevoId(listado) {
 }
 
 function normalizarListado(valor) {
-    // Repara casos como "[[],[]]" o cualquier estructura no válida
     if (!Array.isArray(valor)) return [];
     return valor.filter(p => p && typeof p === "object" && !Array.isArray(p));
 }

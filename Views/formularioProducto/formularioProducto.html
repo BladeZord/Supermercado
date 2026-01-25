@@ -1,0 +1,18 @@
+<form id="producto-form">
+  <input type="hidden" id="id" />
+
+  <label>Código de producto</label>
+  <input type="text" id="codigo_producto" required />
+
+  <label>Nombre de producto</label>
+  <input type="text" id="nombre_producto" required />
+
+  <label>Precio</label>
+  <input type="number" id="precio" step="0.01" required />
+
+  <label>Existencia</label>
+  <input type="number" id="existencia" required />
+
+  <button type="submit">Guardar</button>
+</form>
+<script type="module" src="./formularioProducto.js" defer></script>

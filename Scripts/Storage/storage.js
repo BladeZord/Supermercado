@@ -26,10 +26,11 @@ export function guardarElementoEnStorage(clave, valor) {
         localStorage.setItem(clave, JSON.stringify(valor));
         return true;
     } catch (error) {
-        console.error("Error al guardar en localStorage:", error);
+        console.error("Error al guardar en localStorage", error);
         return false;
     }
 }
+
 
 /**
  * Obtiene un valor desde localStorage
