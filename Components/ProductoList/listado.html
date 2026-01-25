@@ -1,3 +1,24 @@
-<table>
-    
-</table>
+<div class="list-header">
+  <div>
+    <h3 class="card-title">Productos</h3>
+    <p class="card-subtitle">Tu lista actual.</p>
+  </div>
+  <button class="btn btn-secondary" type="button" data-action="clear">Limpiar</button>
+</div>
+
+<div id="productos_empty" class="empty" hidden>
+  Aún no hay productos. Agrega el primero arriba.
+</div>
+
+<div class="table-wrap">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th class="col-num">Cantidad</th>
+        <th class="col-actions">Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="productos_tbody"></tbody>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<div class="card-header">
+  <h3 class="card-title">Nuevo producto</h3>
+  <p class="card-subtitle">Agrega un producto con su cantidad.</p>
+</div>
+
+<form id="producto_form" class="form" autocomplete="off">
+  <div class="form-grid">
+    <label class="field">
+      <span class="label">Nombre</span>
+      <input id="producto_nombre" class="input" type="text" placeholder="Ej: Leche" maxlength="60" required />
+    </label>
+
+    <label class="field">
+      <span class="label">Cantidad</span>
+      <input id="producto_cantidad" class="input" type="number" min="1" step="1" value="1" required />
+    </label>
+  </div>
+
+  <div id="producto_error" class="form-error" hidden></div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Agregar</button>
+  </div>
+</form>
