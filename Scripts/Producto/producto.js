@@ -7,7 +7,6 @@ import {
 /**
  * Modelo => ProductoModel
  * id
- * codigo_producto
  * nombre_producto
  * precio
  * existencia  

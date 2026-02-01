@@ -117,7 +117,7 @@
      Diseño tipo card con flexbox para el contenido principal.
      ========================================================= */
   .contenedor-lista.card {
-    max-width: 560px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 24px;
     background-color: #ffffff;
@@ -125,19 +125,51 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  .contenedor-lista h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
+  /* Layout: formulario a un lado, tabla al otro */
+  .layout-formulario-tabla {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .lado-formulario {
+    flex: 0 0 280px;
+    min-width: 260px;
+  }
+
+  .lado-tabla {
+    flex: 1 1 400px;
+    min-width: 0;
+  }
+
+  .titulo-seccion {
+    margin-bottom: 16px;
+    font-size: 18px;
     color: #1f2933;
   }
 
-  /* Formulario agregar - Flexbox */
+  /* Formulario - Flexbox */
   .form-agregar {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 12px;
-    align-items: flex-end;
     margin-bottom: 16px;
+  }
+
+  .form-botones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn-cancelar {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+  }
+
+  .btn-cancelar:hover {
+    background-color: #d1d5db;
   }
 
   .form-agregar .campo {
@@ -211,42 +243,52 @@
     color: #6b7280;
   }
 
-  /* Lista de productos - diferenciar producto agregado vs comprado */
-  .lista-productos {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  /* Tabla de productos */
+  .tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 16px;
   }
 
-  .lista-productos li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  .tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .tabla-productos th,
+  .tabla-productos td {
     padding: 12px;
-    margin-bottom: 8px;
-    background-color: #f9fafb;
-    border-radius: 6px;
-    border: 1px solid #e5e7eb;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
   }
 
-  .lista-productos li:hover {
+  .tabla-productos th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .tabla-productos tbody tr {
+    background-color: #f9fafb;
+  }
+
+  .tabla-productos tbody tr:hover {
     background-color: #f3f4f6;
   }
 
-  /* Producto comprado: tachado y opacidad (requisito) */
-  .lista-productos li.comprado .texto-producto {
+  /* Producto comprado: tachado y opacidad */
+  .tabla-productos tbody tr.comprado .texto-producto {
     text-decoration: line-through;
     opacity: 0.6;
     color: #6b7280;
   }
 
-  .lista-productos li.comprado {
+  .tabla-productos tbody tr.comprado {
     background-color: #f0fdf4;
-    border-color: #bbf7d0;
   }
 
-  .texto-producto {
-    flex: 1;
+  .tabla-productos tbody tr.comprado:hover {
+    background-color: #dcfce7;
   }
 
   /* Botones de acción por producto */
@@ -262,14 +304,26 @@
   .btn-eliminar {
     background-color: #fee2e2;
     border-color: #fecaca;
+    margin-right: 15px;
   }
 
   .btn-eliminar:hover {
     background-color: #fecaca;
   }
 
+  .btn-editar {
+    background-color: #fef3c7;
+    border-color: #fcd34d;
+  }
+
+  .btn-editar:hover {
+    background-color: #fde68a;
+  }
+
   .lista-vacia {
     color: #6b7280;
     font-style: italic;
+    text-align: center;
+    padding: 24px !important;
     background-color: #f9fafb !important;
   }

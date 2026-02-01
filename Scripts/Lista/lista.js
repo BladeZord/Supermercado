@@ -49,13 +49,14 @@ function nuevoId(lista) {
  * @param {number} cantidad
  * @returns {boolean} true si se guardó bien
  */
-export function agregarProducto(nombre, cantidad) {
+export function agregarProducto(nombre, cantidad, precio) {
   const lista = obtenerLista();
   const id = nuevoId(lista);
   lista.push({
     id: id,
     nombre: String(nombre).trim(),
     cantidad: Number(cantidad),
+    precio: Number(precio),
     comprado: false,
   });
   return guardarLista(lista);
@@ -71,6 +72,24 @@ export function marcarComprado(id) {
   const item = lista.find((p) => Number(p.id) === Number(id));
   if (!item) return false;
   item.comprado = !item.comprado;
+  return guardarLista(lista);
+}
+
+/**
+ * Actualiza un producto existente (nombre, cantidad, precio). Mantiene comprado.
+ * @param {number} id
+ * @param {string} nombre
+ * @param {number} cantidad
+ * @param {number} precio
+ * @returns {boolean}
+ */
+export function actualizarProducto(id, nombre, cantidad, precio) {
+  const lista = obtenerLista();
+  const item = lista.find((p) => Number(p.id) === Number(id));
+  if (!item) return false;
+  item.nombre = String(nombre).trim();
+  item.cantidad = Number(cantidad);
+  item.precio = Number(precio);
   return guardarLista(lista);
 }
 

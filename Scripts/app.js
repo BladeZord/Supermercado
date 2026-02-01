@@ -27,7 +27,7 @@ async function iniciarApp() {
     await cargarHtmlEn("#app", "./Views/listadoProducto/listadoProducto.html");
 
     // Si hay lógica JS para el listado, cárgala después de inyectar el HTML
-    await import("../Views/listadoProducto/listadoProducto.js");
+    await import("./Lista/listadoProducto.js");
 }
 
 iniciarApp().catch((err) => {
