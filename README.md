@@ -131,5 +131,11 @@ El proyecto usa **HTML**, **CSS** y **JavaScript** (Vanilla JS), con separación
 - `Views/formularioProducto/formularioProducto.js` (cuando aplica)
 
 ---
+## 👤 Autor
 
-*Proyecto desarrollado por Kevin Quito, con apoyo de herramientas de asistencia basadas en IA (ChatGPT y Cursor).*
+**Kevin Quito**
+
+- GitHub: https://github.com/BladeZord/Supermercado.git
+- LinkedIn: https://www.linkedin.com/in/kevin-quito-23881824b/
+
+Proyecto desarrollado por Kevin Quito, con apoyo de herramientas de asistencia basadas en IA (ChatGPT y Cursor).
