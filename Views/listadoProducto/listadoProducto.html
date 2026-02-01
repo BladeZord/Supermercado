@@ -1,0 +1,32 @@
+<!-- Vista principal: lista de supermercado -->
+<section class="card contenedor-lista">
+  <h2>Mi lista de supermercado</h2>
+
+  <!-- Formulario para agregar productos -->
+  <form id="form-agregar" class="form-agregar">
+    <div class="campo">
+      <label for="nombre-producto">Nombre del producto</label>
+      <input type="text" id="nombre-producto" placeholder="Ej: Leche" />
+    </div>
+    <div class="campo">
+      <label for="cantidad-producto">Cantidad</label>
+      <input type="number" id="cantidad-producto" min="1" value="1" />
+    </div>
+    <button type="submit" id="btn-agregar">Agregar</button>
+  </form>
+
+  <!-- Mensaje de error (se muestra si hay validación) -->
+  <p id="mensaje-error" class="mensaje-error" aria-live="polite"></p>
+
+  <!-- Contadores: total, comprados, pendientes -->
+  <div class="contadores" aria-label="Resumen de productos">
+    <span id="cont-total">Total: 0</span>
+    <span id="cont-comprados">Comprados: 0</span>
+    <span id="cont-pendientes">Pendientes: 0</span>
+  </div>
+
+  <!-- Lista dinámica de productos -->
+  <ul id="lista-productos" class="lista-productos">
+    <!-- Los items se insertan con JavaScript (createElement) -->
+  </ul>
+</section>

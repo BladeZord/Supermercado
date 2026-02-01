@@ -1,0 +1,275 @@
+/* =========================================================
+   RESET BÁSICO
+   ---------------------------------------------------------
+   Se eliminan márgenes y paddings por defecto del navegador
+   y se unifica el modelo de caja para evitar
+   inconsistencias en el layout.
+   ========================================================= */
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* =========================================================
+     ESTILOS GENERALES DEL BODY
+     ---------------------------------------------------------
+     - Se define la tipografía base del sistema
+     - Se establece un color de fondo neutro
+     - Se define el color principal del texto
+     ========================================================= */
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #1f2933;
+  }
+  
+  /* =========================================================
+     HEADER DE LA APLICACIÓN
+     ---------------------------------------------------------
+     Contenedor visual del encabezado principal.
+     Se utiliza como barra superior de la aplicación.
+     ========================================================= */
+  .app-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 24px 32px;
+  }
+  
+  /* ---------------------------------------------------------
+     TÍTULO PRINCIPAL DEL HEADER
+     - Se destaca visualmente como elemento principal
+     - Se usa flex para alinear ícono y texto
+     --------------------------------------------------------- */
+  .app-header .title {
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* ---------------------------------------------------------
+     SUBTÍTULO DEL HEADER
+     - Texto secundario
+     - Color más suave para jerarquía visual
+     --------------------------------------------------------- */
+  .app-header .subtitle {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  /* =========================================================
+     CONTENIDO PRINCIPAL
+     ---------------------------------------------------------
+     Espaciado general del área central de la aplicación.
+     ========================================================= */
+  main {
+    padding: 32px;
+  }
+  
+  /* =========================================================
+     FOOTER DE LA APLICACIÓN
+     ---------------------------------------------------------
+     Sección inferior con información secundaria
+     (año actual y autor).
+     ========================================================= */
+  .app-footer {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 40px;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 13px;
+    color: #6b7280;
+    background-color: #ffffff;
+  }
+  
+  /* ---------------------------------------------------------
+     SEPARADOR VISUAL DEL FOOTER
+     - Utilizado entre el año y el nombre del autor
+     --------------------------------------------------------- */
+  .footer-separator {
+    margin: 0 6px;
+  }
+  
+  /* =========================================================
+     MEJORAS VISUALES OPCIONALES
+     ---------------------------------------------------------
+     No afectan la funcionalidad, solo la experiencia visual.
+     ========================================================= */
+  
+  /* Efecto hover sutil sobre el header */
+  .app-header:hover {
+    background-color: #f9fafb;
+  }
+  
+  /* Limita el ancho del contenido para pantallas grandes */
+  .app-header,
+  .app-footer {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* =========================================================
+     LISTA DE SUPERMERCADO - CARD / CONTENEDOR CENTRAL
+     ---------------------------------------------------------
+     Diseño tipo card con flexbox para el contenido principal.
+     ========================================================= */
+  .contenedor-lista.card {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .contenedor-lista h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #1f2933;
+  }
+
+  /* Formulario agregar - Flexbox */
+  .form-agregar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+  }
+
+  .form-agregar .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .form-agregar label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+  }
+
+  .form-agregar input {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    min-width: 140px;
+  }
+
+  /* hover y focus en inputs y botones (requisito) */
+  .form-agregar input:hover {
+    border-color: #9ca3af;
+  }
+
+  .form-agregar input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  .form-agregar button,
+  .btn {
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #f3f4f6;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .form-agregar button:hover,
+  .btn:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+  }
+
+  .form-agregar button:focus,
+  .btn:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Mensaje de error */
+  .mensaje-error {
+    display: none;
+    color: #b91c1c;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  /* Contadores */
+  .contadores {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  /* Lista de productos - diferenciar producto agregado vs comprado */
+  .lista-productos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .lista-productos li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #f9fafb;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .lista-productos li:hover {
+    background-color: #f3f4f6;
+  }
+
+  /* Producto comprado: tachado y opacidad (requisito) */
+  .lista-productos li.comprado .texto-producto {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #6b7280;
+  }
+
+  .lista-productos li.comprado {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+
+  .texto-producto {
+    flex: 1;
+  }
+
+  /* Botones de acción por producto */
+  .btn-comprado {
+    background-color: #dbeafe;
+    border-color: #93c5fd;
+  }
+
+  .btn-comprado:hover {
+    background-color: #bfdbfe;
+  }
+
+  .btn-eliminar {
+    background-color: #fee2e2;
+    border-color: #fecaca;
+  }
+
+  .btn-eliminar:hover {
+    background-color: #fecaca;
+  }
+
+  .lista-vacia {
+    color: #6b7280;
+    font-style: italic;
+    background-color: #f9fafb !important;
+  }

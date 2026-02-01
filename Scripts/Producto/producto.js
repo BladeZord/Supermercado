@@ -11,7 +11,7 @@ import {
  * nombre_producto
  * precio
  * existencia  
- */
+ 
 
 /**
  * Guarda o actualiza un producto
